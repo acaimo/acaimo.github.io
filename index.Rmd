@@ -1,6 +1,9 @@
 ---
 title: "Alberto Caimo"
-output: html_notebook
+output:
+  html_notebook:
+      toc: yes
+      code_folding: hide
 ---
 
 
