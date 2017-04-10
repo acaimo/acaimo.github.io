@@ -1,0 +1,47 @@
+# R basics {#Rbasics}
+
+R is an open source programming language and software environment for statistical computing and graphics that is supported by the R Foundation for Statistical Computing [@R].
+
+## Fundamentals
+
+* R uses a command-like environment
+* R is highly extendable
+* You can write your own custom functions
+* There are more than 10,000 free packages
+* Generally good at reading in/writing out other file formats
+* Everything in R is an **object**
+
+## R and RStudio
+
+To install R on your computer, go to the home of the R website at <https://www.r-project.org/>.
+
+We recommend to use the RStudio interface. To install RStudio, go to:
+<http://www.rstudio.org/>.
+
+
+## Package repositories
+
+In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others. Most packages are stored, in an organized way, in online repositories from which they can be easily retrieved and installed on your computer. 
+
+There are two main R repositories:
+
+* The Comprehensive R Archive Network (CRAN): <https://cran.r-project.org/>.
+* Bioconductor (open source software for bioinformatics): <https://www.bioconductor.org/>.
+
+
+## R packages for statistical network analysis
+
+### `statnet`
+
+`statnet` [@statnet] is a suite of software packages providing a comprehensive framework based on exponential random graph models, including tools for model estimation, model evaluation, model-based network simulation, and network visualization.
+
+More info: <https://CRAN.R-project.org/package=statnet>.
+
+### `Bergm`
+
+The `Bergm` package [@cai:fri14] provides a comprehensive framework for Bayesian estimation of exponential random graph models. It can also supply graphical Bayesian goodness-of-fit procedures that address the issue of model adequacy.
+
+More info: <https://CRAN.R-project.org/package=Bergm>.
+
+
+

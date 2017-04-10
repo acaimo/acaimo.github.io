@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Exponential random graph models with R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Exponential random graph models with R">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Exponential random graph models with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Exponential random graph models with R" />
+  
+  
+  
+
+<meta name="author" content="Alberto Caimo and Isabella Gollini">
+
+
+<meta name="date" content="2017-04-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="Rbasics.html">
+<link rel="next" href="ERGMs.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Network Analysis with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i>About the authors</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#alberto-caimo"><i class="fa fa-check"></i>Alberto Caimo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#isabella-gollini"><i class="fa fa-check"></i>Isabella Gollini</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="Rbasics.html"><a href="Rbasics.html"><i class="fa fa-check"></i><b>2</b> R basics</a><ul>
+<li class="chapter" data-level="2.1" data-path="Rbasics.html"><a href="Rbasics.html#fundamentals"><i class="fa fa-check"></i><b>2.1</b> Fundamentals</a></li>
+<li class="chapter" data-level="2.2" data-path="Rbasics.html"><a href="Rbasics.html#r-and-rstudio"><i class="fa fa-check"></i><b>2.2</b> R and RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="Rbasics.html"><a href="Rbasics.html#package-repositories"><i class="fa fa-check"></i><b>2.3</b> Package repositories</a></li>
+<li class="chapter" data-level="2.4" data-path="Rbasics.html"><a href="Rbasics.html#r-packages-for-statistical-network-analysis"><i class="fa fa-check"></i><b>2.4</b> R packages for statistical network analysis</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="Rbasics.html"><a href="Rbasics.html#statnet"><i class="fa fa-check"></i><b>2.4.1</b> <code>statnet</code></a></li>
+<li class="chapter" data-level="2.4.2" data-path="Rbasics.html"><a href="Rbasics.html#bergm"><i class="fa fa-check"></i><b>2.4.2</b> <code>Bergm</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="RGM.html"><a href="RGM.html"><i class="fa fa-check"></i><b>3</b> The random graph model</a><ul>
+<li class="chapter" data-level="3.1" data-path="RGM.html"><a href="RGM.html#networks-as-random-graphs"><i class="fa fa-check"></i><b>3.1</b> Networks as random graphs</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="RGM.html"><a href="RGM.html#notation"><i class="fa fa-check"></i><b>3.1.1</b> Notation</a></li>
+<li class="chapter" data-level="3.1.2" data-path="RGM.html"><a href="RGM.html#visualisation"><i class="fa fa-check"></i><b>3.1.2</b> Visualisation</a></li>
+<li class="chapter" data-level="3.1.3" data-path="RGM.html"><a href="RGM.html#number-of-dyads"><i class="fa fa-check"></i><b>3.1.3</b> Number of dyads</a></li>
+<li class="chapter" data-level="3.1.4" data-path="RGM.html"><a href="RGM.html#number-of-edges"><i class="fa fa-check"></i><b>3.1.4</b> Number of edges</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="RGM.html"><a href="RGM.html#random-graph-model"><i class="fa fa-check"></i><b>3.2</b> Random graph model</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="RGM.html"><a href="RGM.html#estimation"><i class="fa fa-check"></i><b>3.2.1</b> Estimation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="RGM.html"><a href="RGM.html#natural-parametrisation"><i class="fa fa-check"></i><b>3.2.2</b> Natural parametrisation</a></li>
+<li class="chapter" data-level="3.2.3" data-path="RGM.html"><a href="RGM.html#parameter-interpretation"><i class="fa fa-check"></i><b>3.2.3</b> Parameter interpretation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="RGM.html"><a href="RGM.html#network-simulation"><i class="fa fa-check"></i><b>3.3</b> Network simulation</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="RGM.html"><a href="RGM.html#histogram"><i class="fa fa-check"></i><b>3.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="3.3.2" data-path="RGM.html"><a href="RGM.html#boxplot"><i class="fa fa-check"></i><b>3.3.2</b> Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="RGM.html"><a href="RGM.html#network-statistics"><i class="fa fa-check"></i><b>3.4</b> Network statistics</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="RGM.html"><a href="RGM.html#degree-distribution"><i class="fa fa-check"></i><b>3.4.1</b> Degree distribution</a></li>
+<li class="chapter" data-level="3.4.2" data-path="RGM.html"><a href="RGM.html#edgewise-shared-partners-distribution"><i class="fa fa-check"></i><b>3.4.2</b> Edgewise shared partners distribution</a></li>
+<li class="chapter" data-level="3.4.3" data-path="RGM.html"><a href="RGM.html#geodesic-distance-distribution"><i class="fa fa-check"></i><b>3.4.3</b> Geodesic distance distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="RGM.html"><a href="RGM.html#goodness-of-fit-diagnostics"><i class="fa fa-check"></i><b>3.5</b> Goodness of fit diagnostics</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="RGM.html"><a href="RGM.html#graphical-diagnostics"><i class="fa fa-check"></i><b>3.5.1</b> Graphical diagnostics</a></li>
+<li class="chapter" data-level="3.5.2" data-path="RGM.html"><a href="RGM.html#summaries"><i class="fa fa-check"></i><b>3.5.2</b> Summaries</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ERGMs.html"><a href="ERGMs.html"><i class="fa fa-check"></i><b>4</b> Exponential random graph models (ERGMs)</a><ul>
+<li class="chapter" data-level="4.1" data-path="ERGMs.html"><a href="ERGMs.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="ERGMs.html"><a href="ERGMs.html#dependence-assumptions"><i class="fa fa-check"></i><b>4.2</b> Dependence assumptions</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="ERGMs.html"><a href="ERGMs.html#dyadic-independence"><i class="fa fa-check"></i><b>4.2.1</b> Dyadic independence</a></li>
+<li class="chapter" data-level="4.2.2" data-path="ERGMs.html"><a href="ERGMs.html#dyadic-dependence"><i class="fa fa-check"></i><b>4.2.2</b> Dyadic dependence</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="ERGMs.html"><a href="ERGMs.html#network-statistics-1"><i class="fa fa-check"></i><b>4.3</b> Network statistics</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="ERGMs.html"><a href="ERGMs.html#higher-order-network-statistics"><i class="fa fa-check"></i><b>4.3.1</b> Higher-order network statistics</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ERGMs.html"><a href="ERGMs.html#statistics-with-nodal-attributes-variables"><i class="fa fa-check"></i><b>4.3.2</b> Statistics with nodal attributes variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ERGMs.html"><a href="ERGMs.html#parameter-interpretation-1"><i class="fa fa-check"></i><b>4.4</b> Parameter interpretation</a></li>
+<li class="chapter" data-level="4.5" data-path="ERGMs.html"><a href="ERGMs.html#network-simulation-1"><i class="fa fa-check"></i><b>4.5</b> Network simulation</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="ERGMs.html"><a href="ERGMs.html#trace-and-density-plots"><i class="fa fa-check"></i><b>4.5.1</b> Trace and density plots</a></li>
+<li class="chapter" data-level="4.5.2" data-path="ERGMs.html"><a href="ERGMs.html#auto-correlation-plots"><i class="fa fa-check"></i><b>4.5.2</b> Auto-correlation plots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="MLE-ERGMs.html"><a href="MLE-ERGMs.html"><i class="fa fa-check"></i><b>5</b> Maximum likelihood estimation for ERGMs</a><ul>
+<li class="chapter" data-level="5.1" data-path="MLE-ERGMs.html"><a href="MLE-ERGMs.html#monte-carlo-maximum-likelihood-estimation-mc-mle"><i class="fa fa-check"></i><b>5.1</b> Monte Carlo maximum likelihood estimation (MC-MLE)</a></li>
+<li class="chapter" data-level="5.2" data-path="MLE-ERGMs.html"><a href="MLE-ERGMs.html#goodness-of-fit-diagnostics-1"><i class="fa fa-check"></i><b>5.2</b> Goodness of fit diagnostics</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="MLE-ERGMs.html"><a href="MLE-ERGMs.html#graphical-diagnostics-1"><i class="fa fa-check"></i><b>5.2.1</b> Graphical diagnostics</a></li>
+<li class="chapter" data-level="5.2.2" data-path="MLE-ERGMs.html"><a href="MLE-ERGMs.html#summaries-1"><i class="fa fa-check"></i><b>5.2.2</b> Summaries</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Bayes-ERGMs.html"><a href="Bayes-ERGMs.html"><i class="fa fa-check"></i><b>6</b> Bayesian inference for ERGMs</a><ul>
+<li class="chapter" data-level="6.1" data-path="Bayes-ERGMs.html"><a href="Bayes-ERGMs.html#parameter-inference-via-approximate-exchange-algorithm"><i class="fa fa-check"></i><b>6.1</b> Parameter inference via approximate exchange algorithm</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="Bayes-ERGMs.html"><a href="Bayes-ERGMs.html#parallel-adaptive-direction-sampler"><i class="fa fa-check"></i><b>6.1.1</b> Parallel adaptive direction sampler</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="Bayes-ERGMs.html"><a href="Bayes-ERGMs.html#prior-specification"><i class="fa fa-check"></i><b>6.2</b> Prior specification</a></li>
+<li class="chapter" data-level="6.3" data-path="Bayes-ERGMs.html"><a href="Bayes-ERGMs.html#bayesian-goodness-of-fit-diagnostics"><i class="fa fa-check"></i><b>6.3</b> Bayesian goodness of fit diagnostics</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Exponential random graph models with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="RGM" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> The random graph model</h1>
+<div id="networks-as-random-graphs" class="section level2 tabset tabset-fade">
+<h2><span class="header-section-number">3.1</span> Networks as random graphs</h2>
+<p>We describe as the observed network the network data the researcher has collected and is interested in modeling. The observed network is regarded as one realization from a set of possible networks with similar important features, that is, as the outcome of some (unknown) stochastic process. In other words, the observed network is seen as one particular pattern of edges out of a large set of possible patterns.</p>
+<p>Network data are generally represented by graphs of nodes (actors) and edges (relations). Social network analysis focuses on the relations among actors, and not individual actors and their attributes. In fact, for a given model, the node set is regarded as fixed. The range of possible networks, and their probability of occurrence under the model, is represented by a probability distribution on the set of all possible graphs with this number of nodes.</p>
+<p>Once we have defined a probability distribution on the set of all graphs with a fixed number of nodes, we can also draw graphs at random from the distribution according to their assigned probabilities, and we can compare the sampled graphs to the observed one on any other characteristic of interest. If the model is a good one for the data, then the sampled graphs will resemble the observed one in many different respects.</p>
+<div id="notation" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Notation</h3>
+<ul>
+<li><span class="math inline">\(N\)</span> number of nodes (<strong>fixed</strong>).</li>
+<li><span class="math inline">\(D\)</span> number of dyads in a <span class="math inline">\(N\)</span>-node network (<strong>fixed</strong>).</li>
+<li><span class="math inline">\(Y\)</span> <strong>random</strong> <span class="math inline">\(N \times N\)</span> adjacency matrix <span class="math inline">\(\in \mathcal{Y}\)</span> where:<br/>
+<ul>
+<li><span class="math inline">\(Y_{ij} = 0\)</span>, if <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are not connected;</li>
+<li><span class="math inline">\(Y_{ij} = 1\)</span>, if <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are connected;</li>
+<li><span class="math inline">\(Y_{ii} = 0\)</span>, (self-loops are not allowed).</li>
+</ul></li>
+<li><span class="math inline">\(y\)</span> realisation of <span class="math inline">\(Y\)</span> (observed adjacency matrix).</li>
+</ul>
+<p><span class="math inline">\(Y\)</span> may be directed so <span class="math inline">\(Y_{ij}\)</span> and <span class="math inline">\(Y_{ji}\)</span> are two different random variables observed between the same pair of nodes.</p>
+<p>Let’s create a random network on 13 nodes using the <code>network</code> function and have a look at the corresponding adjacency matrix:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(statnet)
+<span class="kw">set.seed</span>(<span class="dv">11</span>)
+N &lt;-<span class="st"> </span><span class="dv">13</span>
+y &lt;-<span class="st"> </span><span class="kw">network</span>(N, <span class="dt">directed =</span> <span class="ot">FALSE</span>)
+y[,]</code></pre></div>
+<pre><code>##    1 2 3 4 5 6 7 8 9 10 11 12 13
+## 1  0 0 1 1 1 0 0 0 1  0  0  0  1
+## 2  0 0 0 1 0 0 0 0 0  1  0  0  0
+## 3  1 0 0 0 0 0 0 0 0  0  1  0  0
+## 4  1 1 0 0 1 0 1 1 0  1  0  1  0
+## 5  1 0 0 1 0 0 0 0 0  0  0  0  0
+## 6  0 0 0 0 0 0 0 0 0  0  0  1  0
+## 7  0 0 0 1 0 0 0 1 0  0  0  0  0
+## 8  0 0 0 1 0 0 1 0 0  0  0  0  0
+## 9  1 0 0 0 0 0 0 0 0  0  0  0  0
+## 10 0 1 0 1 0 0 0 0 0  0  0  0  0
+## 11 0 0 1 0 0 0 0 0 0  0  0  0  0
+## 12 0 0 0 1 0 1 0 0 0  0  0  0  0
+## 13 1 0 0 0 0 0 0 0 0  0  0  0  0</code></pre>
+</div>
+<div id="visualisation" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Visualisation</h3>
+<p>Let’s have a look at the network graph:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">11</span>)
+<span class="kw">plot</span>(y, <span class="dt">vertex.cex =</span> <span class="dv">2</span>, <span class="dt">vertex.col =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="dt">label =</span> <span class="kw">seq</span>(<span class="dv">1</span>, N))</code></pre></div>
+<p><img src="SNA_BOOK_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="number-of-dyads" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Number of dyads</h3>
+<p>In an undirected graph, we have: <span class="math display">\[
+D = \frac{N^2 - N}{2}
+\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">D &lt;-<span class="st"> </span>(N^<span class="dv">2</span> -<span class="st"> </span>N) /<span class="st"> </span><span class="dv">2</span>
+D</code></pre></div>
+<pre><code>## [1] 78</code></pre>
+</div>
+<div id="number-of-edges" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> Number of edges</h3>
+<p>The number of edges is the sum of the 1’s in the observed adjacency matrix <span class="math inline">\(y\)</span>: <span class="math display">\[
+E = s_1(y) = \sum_{i &lt; j} y_{ij}.
+\]</span></p>
+<p>For an undirected adjacency matrix (like <span class="math inline">\(y\)</span>), we have:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s1 &lt;-<span class="st"> </span><span class="kw">sum</span>(y[,]) /<span class="st"> </span><span class="dv">2</span>; s1</code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<p>or using the <code>summary</code> function included in the <code>ergm</code> package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s1 &lt;-<span class="st"> </span><span class="kw">summary</span>(y ~<span class="st"> </span>edges); s1</code></pre></div>
+<pre><code>## edges 
+##    15</code></pre>
+<p>The <code>summary</code> function can be used to get general information about the network:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(y)</code></pre></div>
+<pre><code>## Network attributes:
+##   vertices = 13
+##   directed = FALSE
+##   hyper = FALSE
+##   loops = FALSE
+##   multiple = FALSE
+##   bipartite = FALSE
+##  total edges = 15 
+##    missing edges = 0 
+##    non-missing edges = 15 
+##  density = 0.1923077 
+## 
+## Vertex attributes:
+##   vertex.names:
+##    character valued attribute
+##    13 valid vertex names
+## 
+## No edge attributes
+## 
+## Network adjacency matrix:
+##    1 2 3 4 5 6 7 8 9 10 11 12 13
+## 1  0 0 1 1 1 0 0 0 1  0  0  0  1
+## 2  0 0 0 1 0 0 0 0 0  1  0  0  0
+## 3  1 0 0 0 0 0 0 0 0  0  1  0  0
+## 4  1 1 0 0 1 0 1 1 0  1  0  1  0
+## 5  1 0 0 1 0 0 0 0 0  0  0  0  0
+## 6  0 0 0 0 0 0 0 0 0  0  0  1  0
+## 7  0 0 0 1 0 0 0 1 0  0  0  0  0
+## 8  0 0 0 1 0 0 1 0 0  0  0  0  0
+## 9  1 0 0 0 0 0 0 0 0  0  0  0  0
+## 10 0 1 0 1 0 0 0 0 0  0  0  0  0
+## 11 0 0 1 0 0 0 0 0 0  0  0  0  0
+## 12 0 0 0 1 0 1 0 0 0  0  0  0  0
+## 13 1 0 0 0 0 0 0 0 0  0  0  0  0</code></pre>
+</div>
+</div>
+<div id="random-graph-model" class="section level2">
+<h2><span class="header-section-number">3.2</span> Random graph model</h2>
+<p><strong>Definition</strong> - The likelihood of a random graph model represents the probability distribution of a network graph <span class="math inline">\(y\)</span> given a parameter <span class="math inline">\(\eta\)</span>: <span class="math display">\[
+p(y\ |\ \eta) = \prod_{i &lt; j} \eta^{y_{ij}}(1-\eta)^{1-y_{ij}} = \eta^{s_1(y)}(1 - \eta)^{D - s_1(y)}
+\]</span> where <span class="math inline">\(0 \le \eta \le 1\)</span>.</p>
+<div id="estimation" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Estimation</h3>
+<p>To estimate <span class="math inline">\(\eta\)</span> we can just calculate the <strong>density</strong> of the network, i.e., the proportion of edges: <span class="math display">\[
+\hat{\eta} = \frac{s_1(y)}{D}: 
+\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eta &lt;-<span class="st"> </span>s1 /<span class="st"> </span>D; eta</code></pre></div>
+<pre><code>##     edges 
+## 0.1923077</code></pre>
+<p>this is equivalent to:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eta &lt;-<span class="st"> </span><span class="kw">summary</span>(y ~<span class="st"> </span>density); eta</code></pre></div>
+<pre><code>##   density 
+## 0.1923077</code></pre>
+</div>
+<div id="natural-parametrisation" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Natural parametrisation</h3>
+<p>Now consider <span class="math inline">\(\theta = \mathrm{logit}(\eta)\)</span>: <span class="math display">\[
+\eta = \frac{\exp \{ \theta \} }{1 + \exp \{ \theta \}},
+\]</span> then the random graph model can be written as an exponential family distribution: <span class="math display">\[
+p(y\ |\ \theta) = \prod_{i &lt; j}
+\frac{\exp \left\lbrace \theta \right\rbrace^{y_{ij}}}
+     {1 + \exp \left\lbrace \theta \right\rbrace}
+=
+\frac{\exp\left\lbrace \theta^t\ s_1(y) \right\rbrace}
+     {c(\theta)}
+\]</span> where <span class="math inline">\(-\infty &lt; \theta &lt; +\infty\)</span> and <span class="math display">\[
+c(\theta) 
+=
+\sum_{y&#39; \in \mathcal{Y}} \exp\left\lbrace \theta^t\ s_1(y&#39;) \right\rbrace
+\]</span> is a normalising constant.</p>
+<p>Let’s get an estimate of <span class="math inline">\(\theta\)</span> using the <code>ergm</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">theta &lt;-<span class="st"> </span><span class="kw">ergm</span>(y ~<span class="st"> </span>edges); theta$coef</code></pre></div>
+<pre><code>## Evaluating log-likelihood at the estimate.</code></pre>
+<pre><code>##     edges 
+## -1.435085</code></pre>
+<p>Let’s check whether <span class="math inline">\(\dfrac{\exp \{ \hat{\theta} \} }{1 + \exp \{ \hat{\theta} \}} = \hat{\eta}:\)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">exp</span>(theta$coef) /<span class="st"> </span>(<span class="dv">1</span> +<span class="st"> </span><span class="kw">exp</span>(theta$coef)), <span class="dv">4</span>) ==<span class="st"> </span><span class="kw">round</span>(eta, <span class="dv">4</span>)</code></pre></div>
+<pre><code>## edges 
+##  TRUE</code></pre>
+</div>
+<div id="parameter-interpretation" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Parameter interpretation</h3>
+<p>The parameter estimate <span class="math inline">\(\theta\)</span> provide insights about the contribution of the edge statistic <span class="math inline">\(s_1(y)\)</span> to edge formation.</p>
+When <span class="math inline">\(\theta = 0\)</span>, probability of observing an edge between two nodes <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> is:
+<span class="math display">\[\begin{equation*}
+\Pr(Y_{ij} = 1\ |\ \theta = 0) = \frac{\exp \{ 0 \} }{ 1 + \exp \{ 0 \} } = \eta = 0.5.
+\end{equation*}\]</span>
+<p>where <span class="math inline">\(Y_{ij}\)</span> is an node pair in <span class="math inline">\(Y\)</span> and <span class="math inline">\(Y_{-ij}\)</span> is the rest of the network.</p>
+<p>A negative (positive) value of <span class="math inline">\(\theta\)</span> means that the probability of observing a network with a higher number of edges is lower (higher) than the probability of observing a network whose probability of observing an edge between two nodes is <span class="math inline">\(0.5\)</span>: <span class="math display">\[\Pr(Y_{ij} = 1\ |\ \theta &lt; 0) = \eta &lt; 0.5,\]</span> <span class="math display">\[\Pr(Y_{ij} = 1\ |\ \theta &gt; 0) = \eta &gt; 0.5.\]</span></p>
+<p>Let’s take a look at the summary of model fit using the <code>summary</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(theta)</code></pre></div>
+<pre><code>## 
+## ==========================
+## Summary of model fit
+## ==========================
+## 
+## Formula:   y ~ edges
+## 
+## Iterations:  5 out of 20 
+## 
+## Monte Carlo MLE Results:
+##       Estimate Std. Error MCMC % p-value    
+## edges  -1.4351     0.2873      0  &lt;1e-04 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+##      Null Deviance: 108.13  on 78  degrees of freedom
+##  Residual Deviance:  76.37  on 77  degrees of freedom
+##  
+## AIC: 78.37    BIC: 80.73    (Smaller is better.)</code></pre>
+<p>In this example, <span class="math inline">\(\theta \approx -1.4351\)</span> corresponding to <span class="math inline">\(\eta \approx 0.1923\)</span>. So we can conclude that the network is <em>sparse</em> as the probability to observe an edge connecting any pair of nodes is about 20%.</p>
+</div>
+</div>
+<div id="network-simulation" class="section level2 tabset tabset-fade">
+<h2><span class="header-section-number">3.3</span> Network simulation</h2>
+<p>The estimate <span class="math inline">\(\hat{\eta}\)</span> is the probability of observing an edge between any pair of nodes in our <span class="math inline">\(N\)</span>-node network.</p>
+<p>To simulate from the estimated random graph model we can simply simulate <span class="math inline">\(N \times N - N\)</span> Bernoulli trials and arrange them into a <span class="math inline">\(N \times N\)</span> adjacency matrix:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">11</span>)
+adj.sim &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rbinom</span>(N *<span class="st"> </span>N, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">prob =</span> eta), N, N)
+<span class="kw">diag</span>(adj.sim) &lt;-<span class="st"> </span><span class="dv">0</span>
+y.sim &lt;-<span class="st"> </span><span class="kw">network</span>(adj.sim, <span class="dt">directed =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>Alternatevely, you can use the <code>simulate</code> function (more info: <code>?simulate.ergm</code>) included in the <code>ergm</code> package to simulate a realisation from the estimated model using <span class="math inline">\(\hat{\theta}\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">11</span>)
+y.sim<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">simulate</span>(<span class="kw">network</span>(N, <span class="dt">directed =</span> <span class="ot">FALSE</span>) ~<span class="st"> </span>edges, 
+                    <span class="dt">coef =</span> theta$coef)</code></pre></div>
+<p>Let’s have a look at the two network graphs simulated:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">11</span>)
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">plot</span>(y.sim, <span class="dt">vertex.cex =</span> <span class="dv">2</span>, <span class="dt">vertex.col =</span> <span class="st">&#39;skyblue&#39;</span>, <span class="dt">main =</span> <span class="st">&#39;y.sim&#39;</span>)
+<span class="kw">plot</span>(y.sim<span class="fl">.1</span>, <span class="dt">vertex.cex =</span> <span class="dv">2</span>, <span class="dt">vertex.col =</span> <span class="st">&#39;skyblue&#39;</span>, <span class="dt">main =</span> <span class="st">&#39;y.sim.1&#39;</span>)</code></pre></div>
+<p><img src="SNA_BOOK_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Now, let’s simulate 50 networks from the estimated random graph model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">11</span>)
+y.sim.1_50 &lt;-<span class="st"> </span><span class="kw">simulate</span>(<span class="kw">network</span>(N, <span class="dt">directed =</span> <span class="ot">FALSE</span>) ~<span class="st"> </span>edges, 
+                  <span class="dt">coef =</span> theta$coef,
+                  <span class="dt">statsonly =</span> <span class="ot">TRUE</span>, <span class="co"># returns only the values of the network statistics </span>
+                  <span class="dt">nsim =</span> <span class="dv">50</span>) <span class="co"># number of network simulated</span>
+<span class="kw">summary</span>(y.sim.1_50)</code></pre></div>
+<pre><code>##      edges      
+##  Min.   : 5.00  
+##  1st Qu.:13.25  
+##  Median :15.00  
+##  Mean   :14.78  
+##  3rd Qu.:16.00  
+##  Max.   :22.00</code></pre>
+<div id="histogram" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Histogram</h3>
+<p>We can plot a histogram to visualise the distribution of the number of edges of the 50 simulated networks:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(y.sim.1_50, <span class="dt">xlab =</span> <span class="st">&quot;Number of edges&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;lightgray&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> s1, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">mean</span>(y.sim.1_50), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, 
+       <span class="kw">c</span>(<span class="kw">expression</span>(s1), <span class="kw">expression</span>(<span class="kw">E</span>(s[<span class="dv">1</span>](<span class="kw">tilde</span>(y))))), 
+       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), 
+       <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">lwd =</span> <span class="dv">3</span>)</code></pre></div>
+<p><img src="SNA_BOOK_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="boxplot" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Boxplot</h3>
+<p>Alternatively, we can plot a boxplot:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(y.sim.1_50, <span class="dt">ylab =</span> <span class="st">&quot;Number of edges&quot;</span>)
+<span class="kw">points</span>(s1, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)
+<span class="kw">points</span>(<span class="kw">mean</span>(y.sim.1_50), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, 
+       <span class="kw">c</span>(<span class="kw">expression</span>(s[<span class="dv">1</span>](y)), <span class="kw">expression</span>(<span class="kw">E</span>(s[<span class="dv">1</span>](<span class="kw">tilde</span>(y))))),
+       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">19</span>, <span class="dv">19</span>), 
+       <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</code></pre></div>
+<p><img src="SNA_BOOK_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><br></p>
+</div>
+</div>
+<div id="network-statistics" class="section level2 tabset tabset-fade">
+<h2><span class="header-section-number">3.4</span> Network statistics</h2>
+<p>Due to the complexity of networks, it is necessary to reduce the information to describe essential properties of the network.</p>
+<p>Usually this is done via <em>network statistics</em> a series of counts of sub-graph configurations, catching the relevant information.</p>
+<p>A network statistic:</p>
+<ul>
+<li><p>should <strong>describe essential properties</strong> of the network. A certain property should be described in a compact and handy form. We would like to forget the exact structure of the underlying graph and concentrate on a restricted set of statistics.</p></li>
+<li><p>should <strong>differentiate between certain classes</strong> of networks. A quite common question in network analysis regards the type of the measured network and how to generate models for it. This requires the decision about whether a generated network is similar to another one. In many situations, this may be done by identifying several statistics, which are invariant in the class of networks of interest.</p></li>
+<li><p>may be <strong>useful in algorithms and applications</strong>. Some network statistics may be used for algorithms or calculations on the graph. Or they might indicate which graph elements have certain properties regarding the application.</p></li>
+</ul>
+<div id="degree-distribution" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Degree distribution</h3>
+<p>The degree distribution for a network consists of the values <span class="math display">\[\frac{D_0}{N}, \frac{D_1}{N}, \dots, \frac{D_{N-1}}{N}\]</span> where <span class="math inline">\(\frac{D_{k}}{N}\)</span> equals the proportion of nodes that share edges with exactly <span class="math inline">\(k\)</span> other nodes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Deg.dist &lt;-<span class="st"> </span><span class="kw">summary</span>(y ~<span class="st"> </span><span class="kw">degree</span>(<span class="dv">0</span>:(N<span class="dv">-1</span>)))
+<span class="kw">plot</span>(Deg.dist /<span class="st"> </span>N, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Degree&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Proportion of nodes&quot;</span>)</code></pre></div>
+<p><img src="SNA_BOOK_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="edgewise-shared-partners-distribution" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Edgewise shared partners distribution</h3>
+<p>The edgewise shared partner distribution consists of the values <span class="math display">\[\frac{EP_0}{s_1(y)}, \frac{EP_1}{s_1(y)} \dots, \frac{EP_{N−2}}{s_1(y)}\]</span> where <span class="math inline">\(s_1(y)\)</span> denotes the number of edges and <span class="math inline">\(EP_k\)</span> equals the number of edges whose endpoints both share edges with exactly <span class="math inline">\(k\)</span> other nodes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Ep.dist &lt;-<span class="st"> </span><span class="kw">summary</span>(y ~<span class="st"> </span><span class="kw">esp</span>(<span class="dv">0</span>:(N -<span class="st"> </span><span class="dv">1</span>)))
+<span class="kw">plot</span>(Ep.dist /<span class="st"> </span>s1, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Edgewise shared partners&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Proportion of edges&quot;</span>)</code></pre></div>
+<p><img src="SNA_BOOK_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</div>
+<div id="geodesic-distance-distribution" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Geodesic distance distribution</h3>
+<p>The geodesic distance distribution consists of the relative frequencies of the possible values of geodesic distance between two nodes, where the geodesic distance between two nodes equals the length of the shortest path joining those two nodes (or infinity if there is no such path).</p>
+<p>For instance, because two nodes are at geodesic distance 1 if and only if they are connected by an edge, and because there are <span class="math inline">\(\binom{N}{2}\)</span> possible pairs of nodes, the first value of the geodesic distance distribution equals <span class="math inline">\(\frac{s_1(y)}{\binom{N}{2}}\)</span>. The last value, the fraction of dyads with infinite geodesics, is also called the fraction “unreachable” (NR).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Geo.dist &lt;-<span class="st"> </span><span class="kw">ergm.geodistdist</span>(y)
+<span class="kw">plot</span>(Geo.dist /<span class="st"> </span>D, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Minimum geodesic distance&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Proportion of dyads&quot;</span>)</code></pre></div>
+<p><img src="SNA_BOOK_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><br></p>
+</div>
+</div>
+<div id="goodness-of-fit-diagnostics" class="section level2 tabset tabset-fade">
+<h2><span class="header-section-number">3.5</span> Goodness of fit diagnostics</h2>
+<p>A pragmatic way to examine the fit of the data to the estimated model the output obtained is to implement a goodness-of-fit procedure.</p>
+<p>To do this, a set of network graphs are simulated from the maximum likelihood estimate of the parameter <span class="math inline">\(\hat{\theta}\)</span> and compared to the observed graph in terms of high-level network statistics which are not modelled explicitly.</p>
+<p>We can use the <code>gof</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gof.theta &lt;-<span class="st"> </span><span class="kw">gof</span>(theta ~<span class="st"> </span>degree +<span class="st"> </span>esp +<span class="st"> </span>distance,
+                 <span class="kw">control.gof.formula</span>(<span class="dt">nsim =</span> <span class="dv">100</span>)) <span class="co"># number of simulated networks</span></code></pre></div>
+<div id="graphical-diagnostics" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Graphical diagnostics</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))
+<span class="kw">plot</span>(gof.theta, <span class="dt">main =</span> <span class="st">&#39;&#39;</span>)</code></pre></div>
+<p><img src="SNA_BOOK_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+</div>
+<div id="summaries" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> Summaries</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(gof.theta)</code></pre></div>
+<pre><code>## 
+## Goodness-of-fit for degree 
+## 
+##   obs min mean max MC p-value
+## 0   0   0 1.00   4       0.74
+## 1   4   0 2.86   9       0.58
+## 2   7   1 3.87   8       0.08
+## 3   0   0 3.15   7       0.08
+## 4   0   0 1.45   6       0.54
+## 5   1   0 0.50   3       0.76
+## 6   0   0 0.15   2       1.00
+## 7   1   0 0.01   1       0.02
+## 8   0   0 0.01   1       1.00
+## 
+## Goodness-of-fit for edgewise shared partner 
+## 
+##      obs min  mean max MC p-value
+## esp0   6   4 10.42  18       0.12
+## esp1   9   0  3.71  13       0.14
+## esp2   0   0  0.50   7       1.00
+## esp3   0   0  0.07   1       1.00
+## 
+## Goodness-of-fit for minimum geodesic distance 
+## 
+##     obs min  mean max MC p-value
+## 1    15   9 14.70  21       0.94
+## 2    29   6 21.04  39       0.32
+## 3    25   1 15.19  25       0.02
+## 4     8   0  6.92  17       0.90
+## 5     1   0  2.40   9       1.00
+## 6     0   0  0.77   8       1.00
+## 7     0   0  0.16   3       1.00
+## 8     0   0  0.01   1       1.00
+## Inf   0   0 16.81  58       0.54</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Rbasics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ERGMs.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-RGM.Rmd",
+"text": "Edit"
+},
+"download": ["SNA_BOOK.pdf", "SNA_BOOK.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
