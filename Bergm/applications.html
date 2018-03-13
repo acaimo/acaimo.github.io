@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Applications</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Bergm</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="ion ion-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Development team
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Creator/Mantainer</li>
+    <li>
+      <a href="https://acaimo.github.io">Alberto Caimo</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Contributor</li>
+    <li>
+      <a href="https://sites.google.com/site/bouranisl/">Lampros Bouranis</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Collaborator</li>
+    <li>
+      <a href="https://maths.ucd.ie/~nial/">Nial Friel</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Coming soon!</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="http://bida.bbk.ac.uk/SSNAR17">
+        <span class="ion ion-arrow-right-b"></span>
+         
+        SSNAR 2017
+      </a>
+    </li>
+    <li>
+      <a href="http://insna.org/sunbelt2015/?page_id=214">
+        <span class="ion ion-arrow-right-b"></span>
+         
+        Sunbelt 2015
+      </a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="list(text = &quot;Coming soon!&quot;)">Applications</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="ion ion-link"></span>
+     
+    Links
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.r-project.org/">
+        <span class="ion ion-arrow-right-b"></span>
+         
+        The R Project
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="https://cran.r-project.org/">
+        <span class="ion ion-arrow-right-b"></span>
+         
+        CRAN
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="https://statnet.csde.washington.edu/">
+        <span class="ion ion-arrow-right-b"></span>
+         
+        statnet
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Applications</h1>
+
+</div>
+
+
+<style type="text/css">
+.tabbed-pane { 
+border-style: solid;
+border-top-style: none;
+border-width: 1px;
+border-color: #e2e2e2; 
+padding: 10px;
+} 
+.section h1 {
+padding-top: 100px;
+font-size: 29px;
+}
+.section h2 {
+padding-top: 90px;
+font-size: 23px;
+}
+.section h3 {
+padding-top: 70px;
+}
+</style>
+<p>Applications of <strong>Bergm</strong> can be found in the following articles.</p>
+<div id="papers" class="section level3">
+<h3>Papers</h3>
+<ul style="list-style-type:circle">
+<p>
+<li>
+Amati, V., Lomi, A., &amp; Mira, A. (2018), “Social Network Modelling,” <i>Annual Review of Statistics and Its Application</i>, 5(1).
+</li>
+</p>
+<p>
+<li>
+Caimo, A., Pallotti, F. and Lomi, A. (2017), “Bayesian exponential random graph modelling of interhospital patient referral networks,” <i>Statistics in Medicine</i>, 36(18), 2902 – 2920.
+</li>
+</p>
+<p>
+<li>
+Bouranis, L., Friel, N., &amp; Maire, F. (2017), “Efficient Bayesian inference for exponential random graph models by correcting the pseudo-posterior distribution,” <i>Social Networks</i>, 50, 98 – 108.
+</li>
+</p>
+<p>
+<li>
+Sinke, M., Dijkhuizen, R., Caimo, A., Stam, C., and Otte, W. (2016), “Bayesian exponential random graph modeling of whole-brain structural networks across lifespan,” <i>NeuroImage, </i>135, 79 – 91.
+</li>
+</p>
+<p>
+<li>
+Thiemichen, S., Friel, N., Caimo, A. and Kauermann, G. (2016), “Bayesian Exponential Random Graph Models with Nodal Random Effects,” <i>Social Networks,</i> 46, 11 – 28. [<a href="http://arxiv.org/abs/1407.6895" target="_blank">arXiv:1407.6895</a>]
+</li>
+</p>
+<p>
+<li>
+Alquier, P., Friel, N., Everitt, R., &amp; Boland, A. (2016), “Noisy Monte Carlo: Convergence of Markov chains with approximate transition kernels,” <i>Statistics and Computing,</i> 26(1-2), 29 – 47.
+</li>
+</p>
+<p>
+<li>
+Caimo, A. and Mira, A. (2015), “Efficient Computational Strategies for Doubly Intractable Problems with Applications to Bayesian Social Networks,” <i>Statistics and Computing, </i>25(1), 113 – 125. [<a href="http://arxiv.org/abs/1403.4402" target="_blank">arXiv:1403.4402</a>]
+</li>
+</p>
+<p>
+<li>
+Caimo, A. and Lomi, A. (2015), “Knowledge Sharing in Organisations: a Bayesian Analysis of the Role of Reciprocity and Formal Structure,” <i>Journal of Management</i> (Special Issue on Bayesian Statistics in Management Research), 41(2), 665 – 691.
+</li>
+</p>
+<p>
+<li>
+Caimo, A. and Mira, A. (2014), “Delayed Rejection Algorithm to Estimate Bayesian Social Networks,” <span style="line-height:normal;white-space:pre-wrap"><i>QdS - Journal of Methodological and Applied Statistics, </i></span>16(1), 33 – 44.
+</li>
+</p>
+<p>
+<li>
+Caimo, A. and Friel, N. (2013), “Bayesian Model Selection for Exponential Random Graph Models,” <span style="line-height:normal;white-space:pre-wrap"><i>Social Networks</i>, 35(1), 11 [<a href="http://arxiv.org/abs/1201.2337"  target="_blank">arXiv:1201.2337</a>]
+</li>
+</p>
+<p>
+<li>
+Hunter, D. R., Krivitsky, P. N., &amp; Schweinberger, M. (2012), “Computational statistical methods for social network models,” <i>Journal of Computational and Graphical Statistics,</i> 21(4), 856-882.
+</li>
+</p>
+<p>
+<li>
+Caimo, A. and Friel, N. (2011), “Bayesian Inference for Exponential Random Graph Models,” <i>Social Networks</i>, 33(1), 41 – 55. [<a href="http://arxiv.org/abs/1007.5192"  target="_blank">arXiv:1007.5192</a>]
+</li>
+</p>
+</div>
+<div id="book-chapters" class="section level3">
+<h3>Book chapters</h3>
+<ul style="list-style-type:circle">
+<p>
+<li>
+Caimo, A. and Gollini, I. (2016), “Bayesian Computational Algorithms for Social Network Analysis.” In: Dehmer, M., Shi, Y., Emmert-Streib F. (eds). <i>Computational Network Analysis with R: Applications in Biology, Medicine, and Chemistry,</i> New York: Wiley. [</span><a href="http://arxiv.org/abs/1504.03152"  target="_blank">arxiv:1504.03152</a>]
+</li>
+</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
