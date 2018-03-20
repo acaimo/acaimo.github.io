@@ -19,14 +19,10 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
-<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115609505-1"></script>
 <script>
@@ -177,101 +173,6 @@ $(document).ready(function () {
 
 
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -288,7 +189,7 @@ div.tocify {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="ion ion-home"></span>
+    <span class="fa fa-home"></span>
      
     
   </a>
@@ -310,45 +211,22 @@ div.tocify {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-code"></span>
-     
     Software
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="http://acaimo.github.io/Bergm/">
-        <span class="ion ion-arrow-right-b"></span>
-         
-        Bergm
-      </a>
+      <a href="http://acaimo.github.io/Bergm/">Bergm</a>
     </li>
     <li>
-      <a href="https://github.com/acaimo/ergm-terms">
-        <span class="ion ion-arrow-right-b"></span>
-         
-        New terms for ergm
-      </a>
+      <a href="https://github.com/acaimo/ergm-terms">New terms for ergm</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://scholar.google.com/citations?user=tZKARSgAAAAJ">
-    <span class="fa fa-graduation-cap"></span>
-     
-    
-  </a>
-</li>
-<li>
-  <a href="https://github.com/acaimo">
-    <span class="fa fa-github"></span>
-     
-    
-  </a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -446,15 +324,15 @@ display: none;
 <h3>Invited presentations</h3>
 <table style="border-spacing:5">
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Jul 2017
 </td>
 <td style="padding:5px 10px;" valign="top">
-Invited Talk at DSSV Conference, Lisbon, Portugal
+Talk at DSSV Conference, Lisbon, Portugal
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Sep 2016
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -462,7 +340,7 @@ Talk at RSS Conference, University of Manchester, UK
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Aug 2016
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -470,7 +348,7 @@ Talk at ISBE Symposium on Animal Social Networks, University of Exeter, UK
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Jun 2016
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -478,7 +356,7 @@ Talk at ISBA, Sardinia, Italy
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 May 2016
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -486,7 +364,7 @@ Talk at NetSci2016, Seoul, Korea
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Dec 2015
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -494,7 +372,7 @@ Seminar at Birkbeck, University of London, UK
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Oct 2015
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -502,7 +380,7 @@ Seminar at University of Zurich, Switzerland
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Oct 2015
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -510,7 +388,7 @@ Seminar at Bocconi University Milan, Italy
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Oct 2015
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -518,7 +396,7 @@ Talk at AMS Fall Central Section Meeting, Loyola University Chicago, USA
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Jun 2015
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -531,7 +409,7 @@ Talk at Workshop on Dynamic Networks and Cyber-Security, University of Bristol, 
 <h3>Workshops</h3>
 <table style="border-spacing:5">
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Jun 2017
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -539,7 +417,7 @@ Workshop on Statistical Social Network Analysis with R, Birkbeck University of L
 </td>
 </tr>
 <tr>
-<td align="right" style="padding:5px 10px;width:90px;" valign="top">
+<td align="right" style="padding:5px;width:75px;" valign="top">
 Jun 2015
 </td>
 <td style="padding:5px 10px;" valign="top">
@@ -551,8 +429,6 @@ Workshop on Bayesian exponential random graphs with R, INSNA Sunbelt Confernce, 
 
 
 
-</div>
-</div>
 
 </div>
 
