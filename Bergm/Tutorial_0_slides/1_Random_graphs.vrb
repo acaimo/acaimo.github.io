@@ -1,0 +1,8 @@
+\frametitle{Parameter interpretation}
+For example, suppose $s(y)$ includes the number of edges ($s_1(y)$) and the number of 2-stars ($s_2(y)$).
+\begin{itemize}
+\item $\theta_1 < 0 | \theta_2 \Rightarrow$ sparse network;
+\item $\theta_1 > 0 | \theta_2 \Rightarrow$ dense network;
+\item $\theta_2 > 0 | \theta_1 \Rightarrow$ edges tend to connect nodes with high degree (i.e. presence of high-degree nodes);
+\item $\theta_2 < 0 | \theta_1 \Rightarrow$ absence of high-degree nodes;
+\end{itemize}

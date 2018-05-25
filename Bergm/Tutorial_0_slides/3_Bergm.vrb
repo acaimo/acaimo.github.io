@@ -1,0 +1,11 @@
+\frametitle{Example - {\sf Bergm} in action!}
+\begin{lstlisting}
+bgof(posterior, sample.size = 100, aux.iters = 3000,
+     n.deg = 18, n.dist = 10, n.esp = 8)
+\end{lstlisting}
+\begin{changemargin}{-.7cm}{0cm}
+\begin{figure}[htp]
+  \centering
+  \includegraphics[scale=.68]{bgof.pdf}
+\end{figure}
+\end{changemargin}

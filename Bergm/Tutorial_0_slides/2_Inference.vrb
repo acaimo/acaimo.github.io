@@ -1,0 +1,8 @@
+\frametitle{Goodness of fit diagnostics}
+\begin{lstlisting}
+par(mfrow = c(2, 2))
+plot(model.2.gof, main = '')
+\end{lstlisting}
+ \begin{center}
+ \includegraphics[scale=0.4]{GOF.pdf}
+ \end{center}

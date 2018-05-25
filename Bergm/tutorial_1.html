@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Alberto Caimo" />
+
+
+<title>Tutorial 1</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Bergm</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="ion ion-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Development team
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Creator/Mantainer</li>
+    <li>
+      <a href="acaimo.github.io">Alberto Caimo</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Contributor</li>
+    <li>
+      <a href="https://sites.google.com/site/bouranisl/">Lampros Bouranis</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Collaborator</li>
+    <li>
+      <a href="https://maths.ucd.ie/~nial/">Nial Friel</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="ion ion-document"></span>
+     
+    Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="tutorial_1.html">
+        <span class="ion ion-arrow-right-b"></span>
+         
+        Tutorial 1
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="ion ion-link"></span>
+     
+    Links
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.r-project.org/">
+        <span class="ion ion-arrow-right-b"></span>
+         
+        The R Project
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="https://cran.r-project.org/">
+        <span class="ion ion-arrow-right-b"></span>
+         
+        CRAN
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="https://statnet.csde.washington.edu/">
+        <span class="ion ion-arrow-right-b"></span>
+         
+        statnet
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Tutorial 1</h1>
+<h4 class="author"><em>Alberto Caimo</em></h4>
+
+</div>
+
+
+<style type="text/css">
+.tabbed-pane { 
+border-style: solid;
+border-top-style: none;
+border-width: 1px;
+border-color: #e2e2e2; 
+padding: 10px;
+} 
+.section h1 {
+padding-top: 100px;
+font-size: 29px;
+}
+.section h2 {
+padding-top: 90px;
+font-size: 23px;
+}
+.section h3 {
+padding-top: 70px;
+}
+</style>
+<hr/>
+<div id="getting-started" class="section level3">
+<h3>Getting started</h3>
+<p>The <strong>Bergm</strong> package for R depends on/makes use of functions included in the following packages: <strong>statnet</strong> suite of packages ( in particular <strong>ergm</strong> and <strong>network</strong>), <strong>coda</strong>, <strong>MCMCpack</strong>, <strong>Matrix</strong>, <strong>mvtnorm</strong>.</p>
+<p>To install the <strong>Bergm</strong> package:</p>
+<pre class="r"><code>install.packages(&#39;Bergm&#39;)</code></pre>
+<p>To load it:</p>
+<pre class="r"><code>library(Bergm)</code></pre>
+<p>To get more information about it:</p>
+<pre class="r"><code>help(package = &#39;Bergm&#39;)</code></pre>
+</div>
+<div id="notation" class="section level3">
+<h3>Notation</h3>
+<ul>
+<li><span class="math inline">\(N\)</span> number of nodes of the network.</li>
+<li><span class="math inline">\(D\)</span> number of dyads (pair of nodes) in a <span class="math inline">\(N\)</span>-node network (<strong>fixed</strong>).</li>
+<li><span class="math inline">\(Y\)</span> <strong>random</strong> network graph described by a <span class="math inline">\(N \times N\)</span> adjacency matrix where:<br/>
+<ul>
+<li><span class="math inline">\(Y_{ij} = 0\)</span>, if <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are not connected;</li>
+<li><span class="math inline">\(Y_{ij} = 1\)</span>, if <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are connected;</li>
+<li><span class="math inline">\(Y_{ii} = 0\)</span>, (self-loops are not allowed).</li>
+</ul></li>
+<li><span class="math inline">\(y\)</span> realisation of <span class="math inline">\(Y\)</span>: network data.</li>
+</ul>
+<p><span class="math inline">\(Y\)</span> may be <em>directed</em> so <span class="math inline">\(Y_{ij}\)</span> and <span class="math inline">\(Y_{ji}\)</span> are two different random variables observed between the same pair of nodes.</p>
+<p>Let’s consider, for example, the florentine marriage network dateset (type <code>?flomarriage</code> for more info) included in <strong>statnet</strong>:</p>
+<pre class="r"><code>data(florentine)
+y &lt;- flomarriage # let&#39;s save our data as y
+y # basic info about the flomarriage network data</code></pre>
+<pre><code>##  Network attributes:
+##   vertices = 16 
+##   directed = FALSE 
+##   hyper = FALSE 
+##   loops = FALSE 
+##   multiple = FALSE 
+##   bipartite = FALSE 
+##   total edges= 20 
+##     missing edges= 0 
+##     non-missing edges= 20 
+## 
+##  Vertex attribute names: 
+##     priorates totalties vertex.names wealth 
+## 
+## No edge attributes</code></pre>
+<pre class="r"><code>plot(y, 
+     vertex.cex = 2, 
+     label = network.vertex.names(y), 
+     label.cex = 0.5)</code></pre>
+<p><img src="tutorial_1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="bayesian-parameter-inference" class="section level3">
+<h3>Bayesian parameter inference</h3>
+<p>Given a certain ERGM model <span class="math inline">\(f(y | \theta) \propto \exp \{ \theta^t s(y) \}\)</span> defined by some network statistics <span class="math inline">\(s(y)\)</span> and corresponding parameters <span class="math inline">\(\theta\)</span>, we can use the Bayes’ theorem to calculate the <strong>posterior</strong> probability distribution of the parameters <span class="math inline">\(\theta\)</span> given the observed network data <span class="math inline">\(y\)</span>: <span class="math display">\[p(\theta | y) =  \dfrac{f(y | \theta) \: p(\theta)}{p(y)},\]</span> where:</p>
+<ul>
+<li><span class="math inline">\(p(\theta)\)</span> is a <strong>prior</strong> parameter probability distribution;</li>
+<li><span class="math inline">\(p(y)\)</span> is the <strong>marginal likelihood</strong> (or <strong>model evidence</strong>) which is generally difficult to compute and it is therefore unavailable.</li>
+</ul>
+<p>The aim of Bayesian parameter inference is to estimate <span class="math inline">\(p(\theta|y)\)</span> by specifying some prior distribution on the parameters <span class="math inline">\(\theta\)</span> associated to the network statistics that we inted to include in our ERGM model.</p>
+<div id="prior-specification" class="section level4">
+<h4>Prior specification</h4>
+<p>Real-world social networks are generally sparse meaning that their density (i.e., the proportion of edges) is close to 0. This implies that the parameter corresponding to the number of edges in an ERGM model is generally negative. Also, we often expect that the parameter associated to triadic clustering statistics (such as the number of triangles or gwesp) in the network, is positive. This prior information (i.e., set of assumptions on the effects that are made before observing the dataset) can be used to specify a prior distribution.</p>
+<p>In the <strong>Bergm</strong> package the prior distribution is represented by a multivariate normal distribution: <span class="math display">\[ \theta \sim N(\mu, \Sigma) \]</span> with parameters <span class="math inline">\(\mu\)</span> corresponding to the mean vector, and <span class="math inline">\(\Sigma\)</span> corresponding to the variance/covariance matrix.</p>
+<p>Suppose to want to estimate the posterior distribution of an ERGM model with statistics <code>edges</code> (number of edges) and <code>gwesp</code> (geometrically weighted edge-wise shared partner statistic):</p>
+<pre class="r"><code>model &lt;- y ~ edges + gwesp(0.5, fixed = TRUE)
+post &lt;- bergm(model, 
+              
+              iter = 100)
+attributes(post)</code></pre>
+<pre><code>## $names
+##  [1] &quot;Clist&quot;      &quot;MHproposal&quot; &quot;control&quot;    &quot;formula&quot;    &quot;model&quot;     
+##  [6] &quot;nnodes&quot;     &quot;specs&quot;      &quot;dim&quot;        &quot;nchains&quot;    &quot;stats&quot;     
+## [11] &quot;Theta&quot;      &quot;nchains&quot;    &quot;AR&quot;         &quot;prior.mean&quot; &quot;sigma.mean&quot;
+## [16] &quot;aux.iters&quot; 
+## 
+## $class
+## [1] &quot;bergm&quot;</code></pre>
+<pre class="r"><code>post$AR</code></pre>
+<pre><code>## [1] 0.513 0.529 0.502 0.499</code></pre>
+<pre class="r"><code>bergm.output(post)</code></pre>
+<pre><code>## 
+##  Posterior Density Estimate for Model: y ~ edges + gwesp(0.5, fixed = TRUE) 
+##  
+##                                 Mean        SD    Naive SE Time-series SE
+## theta1 (edges)           -1.73890768 0.3793898 0.005998679     0.02716899
+## theta2 (gwesp.fixed.0.5)  0.05499854 0.2847629 0.004502497     0.02218347
+## 
+##                               2.5%        25%         50%        75%
+## theta1 (edges)           -2.474443 -1.9862592 -1.76307170 -1.4847263
+## theta2 (gwesp.fixed.0.5) -0.551222 -0.1282889  0.06308527  0.2549076
+##                               97.5%
+## theta1 (edges)           -1.0236550
+## theta2 (gwesp.fixed.0.5)  0.5858704
+## 
+##  Acceptance rate: 0.51075 
+##  
+## </code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
