@@ -1,0 +1,3 @@
+<meta name="keywords" content="Alberto Caimo, Bayesian statistics, social networks"/>
+<meta name="topic" content="Statistics">
+<meta name="subject" content="Statistics, social networks, data science, R,">
