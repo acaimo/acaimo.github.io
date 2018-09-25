@@ -16,7 +16,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -92,6 +92,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -101,34 +104,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 45px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 </style>
 
@@ -195,7 +198,7 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Creator/Mantainer</li>
     <li>
-      <a href="acaimo.github.io">Alberto Caimo</a>
+      <a href="https://acaimo.github.io">Alberto Caimo</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Contributor</li>
@@ -211,21 +214,33 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="ion ion-document"></span>
-     
     Tutorials
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="tutorial_1.html">
-        <span class="ion ion-arrow-right-b"></span>
-         
-        Tutorial 1
-      </a>
+      <a href="0_Bergm_Intro.pdf">Intro - Basic functions</a>
     </li>
   </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="http://bida.bbk.ac.uk/SSNAR17">SSNAR 2017</a>
+    </li>
+    <li>
+      <a href="http://insna.org/sunbelt2015/?page_id=214">Sunbelt 2015</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="applications.html">Applications</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -278,6 +293,7 @@ $(document).ready(function () {
 </div>
 
 
+<link rel="stylesheet" type="text/css" href="mycss.css">
 <style type="text/css">
 .tabbed-pane { 
 border-style: solid;
@@ -375,23 +391,23 @@ attributes(post)</code></pre>
 ## $class
 ## [1] &quot;bergm&quot;</code></pre>
 <pre class="r"><code>post$AR</code></pre>
-<pre><code>## [1] 0.513 0.529 0.502 0.499</code></pre>
+<pre><code>## [1] 0.506 0.513 0.529 0.462</code></pre>
 <pre class="r"><code>bergm.output(post)</code></pre>
 <pre><code>## 
 ##  Posterior Density Estimate for Model: y ~ edges + gwesp(0.5, fixed = TRUE) 
 ##  
 ##                                 Mean        SD    Naive SE Time-series SE
-## theta1 (edges)           -1.73890768 0.3793898 0.005998679     0.02716899
-## theta2 (gwesp.fixed.0.5)  0.05499854 0.2847629 0.004502497     0.02218347
+## theta1 (edges)           -1.67939789 0.3773263 0.005966052     0.02783770
+## theta2 (gwesp.fixed.0.5)  0.02537995 0.2738662 0.004330204     0.02046227
 ## 
 ##                               2.5%        25%         50%        75%
-## theta1 (edges)           -2.474443 -1.9862592 -1.76307170 -1.4847263
-## theta2 (gwesp.fixed.0.5) -0.551222 -0.1282889  0.06308527  0.2549076
+## theta1 (edges)           -2.435070 -1.9499386 -1.68040737 -1.4200471
+## theta2 (gwesp.fixed.0.5) -0.519065 -0.1440037  0.01293463  0.1994005
 ##                               97.5%
-## theta1 (edges)           -1.0236550
-## theta2 (gwesp.fixed.0.5)  0.5858704
+## theta1 (edges)           -0.9847549
+## theta2 (gwesp.fixed.0.5)  0.5538877
 ## 
-##  Acceptance rate: 0.51075 
+##  Acceptance rate: 0.5025 
 ##  
 ## </code></pre>
 </div>
