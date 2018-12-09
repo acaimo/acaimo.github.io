@@ -1570,7 +1570,7 @@ More info: <a href="http://acaimo.github.io/Bergm/">http://acaimo.github.io/Berg
 
 
 <div id="getting-started" class="section level1">
-<h1>0. Getting started</h1>
+<h1>1. Getting started</h1>
 <p>Install and load the <strong>statnet</strong> and <strong>Bergm</strong> packages:</p>
 <pre class="r"><code>devtools::install_github(&quot;acaimo/Bergm&quot;)
 install.packages(&quot;statnet&quot;, repos = &quot;http://cran.r-project.org&quot;)
@@ -1578,8 +1578,8 @@ library(statnet)
 library(Bergm)</code></pre>
 </div>
 <div id="network-data" class="section level1">
-<h1>1. Network data</h1>
-<p>Let’s load and visualise the <code>gangs</code> network data (Criminal network of 67 gang members in Italy made available by the University of Manchester Mitchell Centre for Social Network Analysis):</p>
+<h1>2. Network data</h1>
+<p>Let’s load and plot the <code>gangs</code> network data (Criminal network of 67 gang members in Italy, made available by the University of Manchester <a href="https://www.socialsciences.manchester.ac.uk/mitchell-centre/research/covert-networks/">Mitchell Centre for Social Network Analysis</a>):</p>
 <pre class="r"><code>load(url(&quot;http://acaimo.github.io/Bergm/network_data/gangs.Rdata&quot;))
 
 set.seed(27)
@@ -1729,6 +1729,11 @@ evidence.est &lt;- evidence_CJ(model,
                             num.samples   = 25000,
                             tunePL        = 1.5,
                             info.adjustPL = info.adjustPL)   </code></pre>
+<pre><code>
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+The Metropolis acceptance rate was 0.20774
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</code></pre>
 <pre class="r"><code># MCMC diagnostics and posterior summaries:
 bergm.output(evidence.est)</code></pre>
 <pre><code>
