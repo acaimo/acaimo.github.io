@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -84,7 +84,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -233,6 +232,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -244,18 +244,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -423,6 +411,11 @@ padding-top: 70px;
 <ul style="list-style-type:circle">
 <p>
 <li>
+Balest, J., Secco, L., Pisani, E., and Caimo, A. (2019). “Sustainable energy governance in South Tyrol (Italy): A probabilistic bipartite network model,” <i>Journal of Cleaner Production</i>, 221, 854 –862.
+</li>
+</p>
+<p>
+<li>
 Caimo, A., Pallotti, F. and Lomi, A. (2017), “Bayesian exponential random graph modelling of interhospital patient referral networks,” <i>Statistics in Medicine</i>, 36(18), 2902 – 2920.
 </li>
 </p>
@@ -440,6 +433,16 @@ Caimo, A. and Lomi, A. (2015), “Knowledge Sharing in Organisations: a Bayesian
 <div id="methodological-papers" class="section level3">
 <h3>Methodological papers</h3>
 <ul style="list-style-type:circle">
+<p>
+<li>
+Lehmann, B. C., Henson, R. N., Geerligs, L., and White, S. R. (2020). “Characterising group-level brain connectivity: A framework using Bayesian exponential random graph models.” <i>bioRxiv</i>, 665398.
+</li>
+</p>
+<p>
+<li>
+Krause, R. W., and Caimo, A. (2019). “Missing data augmentation for Bayesian exponential random multi-graph models,” <i>In International workshop on complex networks</i> (pp. 63-72). Springer.
+</li>
+</p>
 <p>
 <li>
 Krause, Robert., Huisman, Mark., Christian, Steglich., &amp; Snijders, Tom. (2018), “Missing network data. A comparison of different imputation methods,” <i>IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM).</i>
@@ -518,6 +521,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
